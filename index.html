@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Jakten på den perfekte pommes frites i Trondheim — én mening, ristet i potet."
+      content="Jakten på den perfekte pommes frites i Trondheim — en retro-inspirert frites-quest."
     />
-    <title>Trondheim Fries — Pommes Frites Rangering</title>
+    <title>Trondheim Fries — Pommes Frites Quest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Chewy&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
       rel="stylesheet"
     />
     <link
@@ -23,67 +23,66 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="grain" aria-hidden="true"></div>
+    <!-- Scanlines overlay -->
+    <div class="scanlines" aria-hidden="true"></div>
 
-    <!-- Hero Section -->
-    <section class="section section--hero" id="hero">
-      <div class="hero-content">
-        <p class="hero-tag">Trondheim · Norge</p>
-        <h1 class="hero-title">
-          <span class="hero-title__main">Trondheim</span>
-          <span class="hero-title__fries">Fries</span>
-        </h1>
-        <p class="hero-subtitle" data-i18n="siteSubtitle"></p>
-        <div class="hero-prose">
+    <!-- Hero / Title Screen -->
+    <section class="title-screen" id="title-screen">
+      <div class="title-screen__content">
+        <div class="pixel-border title-card">
+          <p class="title-card__location">TRONDHEIM · NORGE</p>
+          <h1 class="title-card__name">
+            <span class="title-glow">TRONDHEIM</span>
+            <span class="title-fries">FRIES</span>
+          </h1>
+          <p class="title-card__subtitle" data-i18n="siteSubtitle"></p>
+        </div>
+        <div class="title-prose">
           <p data-i18n="heroLead"></p>
           <p data-i18n="heroBody"></p>
         </div>
-        <nav class="hero-nav" aria-label="Seksjon-navigasjon">
-          <a href="#map-section" class="btn btn--primary" data-i18n="scrollToMap"></a>
-          <a href="#list-section" class="btn btn--secondary" data-i18n="scrollToList"></a>
-        </nav>
+        <button class="btn-start pixel-border" id="start-btn">
+          <span class="btn-start__icon">▶</span>
+          <span data-i18n="heroStart"></span>
+        </button>
+        <div class="title-coins" aria-hidden="true">
+          <span class="coin">🍟</span>
+          <span class="coin">🍟</span>
+          <span class="coin">🍟</span>
+        </div>
       </div>
-      <div class="hero-fry-decoration" aria-hidden="true">
-        <div class="fry-stick fry-stick--1"></div>
-        <div class="fry-stick fry-stick--2"></div>
-        <div class="fry-stick fry-stick--3"></div>
-        <div class="fry-stick fry-stick--4"></div>
-        <div class="fry-stick fry-stick--5"></div>
+      <div class="title-screen__map-peek" aria-hidden="true">
+        <div id="map-peek"></div>
       </div>
     </section>
 
-    <!-- Map Section (full viewport) -->
-    <section class="section section--map" id="map-section">
-      <div class="section-header section-header--overlay">
-        <h2 data-i18n="mapHeading"></h2>
-        <p data-i18n="mapHint"></p>
+    <!-- Main Game Screen (split) -->
+    <section class="game-screen" id="game-screen">
+      <!-- Left Panel: List / Review -->
+      <div class="panel-left" id="panel-left">
+        <div class="panel-left__header pixel-border-bottom">
+          <h2 class="panel-left__title" data-i18n="listHeading"></h2>
+          <div class="hud">
+            <span class="hud__stations"><span id="station-count">8</span> stasjoner</span>
+          </div>
+        </div>
+        <div class="panel-left__body" id="panel-body">
+          <!-- List or review content injected here -->
+        </div>
       </div>
-      <div id="map" class="map-fullscreen" role="application" aria-label="Kart over rangerte steder i Trondheim"></div>
-    </section>
 
-    <!-- Rankings List Section -->
-    <section class="section section--list" id="list-section">
-      <div class="section-header">
-        <h2 data-i18n="listHeading"></h2>
-        <p data-i18n="listHint"></p>
-      </div>
-      <ol class="rank-list" id="rank-list"></ol>
-    </section>
-
-    <!-- About Section -->
-    <section class="section section--about" id="about-section">
-      <div class="about-content">
-        <h2 data-i18n="aboutHeading"></h2>
-        <p data-i18n="aboutText"></p>
+      <!-- Right Panel: Map -->
+      <div class="panel-right" id="panel-right">
+        <div id="map" class="map-container" role="application" aria-label="Kart over rangerte steder i Trondheim"></div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="site-footer">
+    <footer class="site-footer pixel-border-top">
       <p data-i18n="footerText"></p>
       <div class="lang-switcher">
-        <button class="lang-btn" data-lang="no" aria-label="Norsk">🇳🇴 Norsk</button>
-        <button class="lang-btn" data-lang="en" aria-label="English">🇬🇧 English</button>
+        <button class="lang-btn pixel-border" data-lang="no">🇳🇴 NO</button>
+        <button class="lang-btn pixel-border" data-lang="en">🇬🇧 EN</button>
       </div>
     </footer>
 
@@ -93,6 +92,7 @@
       crossorigin=""
     ></script>
     <script src="i18n.js"></script>
+    <script src="data.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

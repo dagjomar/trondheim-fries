@@ -3,37 +3,47 @@ const translations = {
     siteTitle: "Trondheim Fries",
     siteSubtitle: "Jakten på den perfekte pommes frites",
     heroLead:
-      "Pommes frites er den ultimate snacksen. Sprø på utsiden, myk på innsiden — en enkel rett som få mestrer. Ikke alle steder lager dem like godt, og det er derfor denne siden finnes.",
+      "Pommes frites er den ultimate snacksen. Sprø på utsiden, myk på innsiden — en enkel rett som få mestrer.",
     heroBody:
-      "Dette er én persons besettelse — en kjærlighetshistorie til den gyldne potetpinnen. En quest gjennom Trondheims gater for å finne hvem som virkelig fortjener tronen.",
-    mapHeading: "Kartet",
-    mapHint: "Trykk på en markør for å se hvem det er.",
-    listHeading: "Rangeringen",
-    listHint: "Rekkefølgen er lov. Salt er valgfritt.",
-    aboutHeading: "Om denne siden",
+      "Dette er én persons quest gjennom Trondheims gater for å finne hvem som virkelig fortjener tronen. Ikke alle steder lager dem like godt, og det er derfor denne siden finnes.",
+    heroStart: "Start quest",
+    mapHeading: "Verdenskartet",
+    mapHint: "Velg en lokasjon for å lese anmeldelsen.",
+    listHeading: "Alle stasjoner",
+    reviewBack: "← Tilbake til liste",
+    reviewVisit: "Besøkt",
+    aboutHeading: "Om denne questen",
     aboutText:
-      "Denne siden er laget av ren kjærlighet til pommes frites. Ingenting sponset, ingen samarbeid — bare ærlige meninger fra en som har spist altfor mange poteter. Målet er enkelt: finn de beste friesene i Trondheim, og del svaret med verden.",
-    footerText: "Laget med fett og overbevisning.",
-    scrollToMap: "Se kartet",
-    scrollToList: "Se rangeringen",
+      "Denne siden er laget av ren kjærlighet til pommes frites. Ingen sponsing, ingen samarbeid — bare ærlige meninger fra en som har spist altfor mange poteter. Målet er enkelt: finn de beste friesene i Trondheim.",
+    footerText: "Laget med fett og overbevisning. Nye stasjoner legges til jevnlig.",
+    ratingLabel: "Poeng",
+    crispLabel: "Sprøhet",
+    flavorLabel: "Smak",
+    portionLabel: "Porsjon",
+    vibeLabel: "Stemning",
   },
   en: {
     siteTitle: "Trondheim Fries",
     siteSubtitle: "The quest for the perfect French fry",
     heroLead:
-      "French fries are the ultimate snack food. Crispy outside, soft inside — a simple dish that few truly master. Not every place makes them well, and that is why this page exists.",
+      "French fries are the ultimate snack food. Crispy outside, soft inside — a simple dish that few truly master.",
     heroBody:
-      "This is one person's obsession — a love letter to the golden potato stick. A quest through the streets of Trondheim to find who truly deserves the throne.",
-    mapHeading: "The Map",
-    mapHint: "Tap a marker to see who it is.",
-    listHeading: "The Ranking",
-    listHint: "Order is law. Salt is optional.",
-    aboutHeading: "About this page",
+      "This is one person's quest through the streets of Trondheim to find who truly deserves the throne. Not every place makes them well, and that's why this page exists.",
+    heroStart: "Start quest",
+    mapHeading: "World Map",
+    mapHint: "Select a location to read the review.",
+    listHeading: "All stations",
+    reviewBack: "← Back to list",
+    reviewVisit: "Visited",
+    aboutHeading: "About this quest",
     aboutText:
-      "This page is born of pure love for French fries. Nothing sponsored, no partnerships — just honest opinions from someone who has eaten way too many potatoes. The goal is simple: find the best fries in Trondheim, and share the answer with the world.",
-    footerText: "Made with grease and conviction.",
-    scrollToMap: "See the map",
-    scrollToList: "See the ranking",
+      "This page is born of pure love for French fries. Nothing sponsored, no partnerships — just honest opinions from someone who has eaten way too many potatoes. The goal is simple: find the best fries in Trondheim.",
+    footerText: "Made with grease and conviction. New stations added regularly.",
+    ratingLabel: "Score",
+    crispLabel: "Crispness",
+    flavorLabel: "Flavor",
+    portionLabel: "Portion",
+    vibeLabel: "Vibe",
   },
 };
 
@@ -51,9 +61,9 @@ function setLanguage(lang) {
       const key = el.getAttribute("data-i18n");
       el.textContent = t(key);
     });
-    document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
-      const key = el.getAttribute("data-i18n-aria");
-      el.setAttribute("aria-label", t(key));
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+      const key = el.getAttribute("data-i18n-placeholder");
+      el.setAttribute("placeholder", t(key));
     });
   }
 }
