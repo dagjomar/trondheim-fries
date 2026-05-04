@@ -56,24 +56,27 @@
       </div>
     </section>
 
-    <!-- Main Game Screen (split) -->
+    <!-- Main Game Screen -->
     <section class="game-screen" id="game-screen">
-      <!-- Left Panel: List / Review -->
-      <div class="panel-left" id="panel-left">
-        <div class="panel-left__header pixel-border-bottom">
-          <h2 class="panel-left__title" data-i18n="listHeading"></h2>
-          <div class="hud">
-            <span class="hud__stations"><span id="station-count">8</span> stasjoner</span>
+      <!-- Highscore list (narrow left panel) -->
+      <aside class="highscore-panel" id="highscore-panel">
+        <div class="highscore-panel__header pixel-border-bottom">
+          <h2 class="highscore-panel__title" data-i18n="listHeading"></h2>
+          <span class="highscore-panel__count" id="station-count"></span>
+        </div>
+        <ol class="highscore-list" id="highscore-list"></ol>
+      </aside>
+
+      <!-- Map (takes rest of space) -->
+      <div class="map-panel" id="map-panel">
+        <div id="map" class="map-container" role="application" aria-label="Kart over rangerte steder i Trondheim"></div>
+
+        <!-- Review overlay (slides up from bottom-right) -->
+        <div class="review-overlay" id="review-overlay">
+          <div class="review-overlay__content" id="review-content">
+            <!-- Injected by JS -->
           </div>
         </div>
-        <div class="panel-left__body" id="panel-body">
-          <!-- List or review content injected here -->
-        </div>
-      </div>
-
-      <!-- Right Panel: Map -->
-      <div class="panel-right" id="panel-right">
-        <div id="map" class="map-container" role="application" aria-label="Kart over rangerte steder i Trondheim"></div>
       </div>
     </section>
 

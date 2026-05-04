@@ -76,32 +76,22 @@ function updateMarkers() {
   });
 }
 
-function renderList() {
-  const body = document.getElementById("panel-body");
+function renderHighscore() {
+  const list = document.getElementById("highscore-list");
   const sorted = [...OFFICIAL_RANKINGS].sort((a, b) => a.rank - b.rank);
 
-  let html = '<ul class="station-list">';
+  list.innerHTML = "";
   sorted.forEach((entry) => {
-    const stars = "★".repeat(Math.round(entry.rating / 2)) +
-                  "☆".repeat(5 - Math.round(entry.rating / 2));
-    html += `
-      <li class="station-item pixel-border" data-id="${entry.id}">
-        <span class="station-item__rank">#${entry.rank}</span>
-        <div class="station-item__info">
-          <h3 class="station-item__name">${entry.name}</h3>
-          <p class="station-item__area">${entry.area}</p>
-        </div>
-        <div class="station-item__score">
-          <span class="station-item__rating">${entry.rating}</span>
-          <span class="station-item__stars">${stars}</span>
-        </div>
-      </li>`;
-  });
-  html += "</ul>";
-  body.innerHTML = html;
-
-  body.querySelectorAll(".station-item").forEach((el) => {
-    el.addEventListener("click", () => showReview(el.dataset.id));
+    const li = document.createElement("li");
+    li.className = "highscore-item" + (entry.id === activeId ? " is-active" : "");
+    li.dataset.id = entry.id;
+    li.innerHTML = `
+      <span class="highscore-item__rank">${entry.rank}</span>
+      <span class="highscore-item__name">${entry.name}</span>
+      <span class="highscore-item__score">${entry.rating}</span>
+    `;
+    li.addEventListener("click", () => showReview(entry.id));
+    list.appendChild(li);
   });
 }
 
@@ -111,29 +101,27 @@ function showReview(id) {
 
   activeId = id;
   updateMarkers();
+  renderHighscore();
 
   mainMap.setView([entry.lat, entry.lng], DETAIL_ZOOM, { animate: true });
 
-  const body = document.getElementById("panel-body");
+  const overlay = document.getElementById("review-overlay");
+  const content = document.getElementById("review-content");
   const review = getReview(entry);
   const scores = entry.scores;
 
-  body.innerHTML = `
-    <div class="review-panel">
-      <button class="review-back pixel-border" id="back-btn">
-        <span data-i18n="reviewBack">${t("reviewBack")}</span>
-      </button>
-      <div class="review-header">
-        <span class="review-rank pixel-border">#${entry.rank}</span>
-        <div>
-          <h3 class="review-name">${entry.name}</h3>
-          <p class="review-area">${entry.area}</p>
-        </div>
+  content.innerHTML = `
+    <button class="review-close" id="review-close-btn" aria-label="Lukk">✕</button>
+    <div class="review-hero-img">
+      <img src="${entry.img}" alt="${entry.name}" />
+      <div class="review-hero-badge pixel-border">
+        <span class="review-hero-badge__rank">#${entry.rank}</span>
+        <span class="review-hero-badge__score">${entry.rating}/10</span>
       </div>
-      <div class="review-score-big">
-        <span class="review-score-big__number">${entry.rating}</span>
-        <span class="review-score-big__label">/10</span>
-      </div>
+    </div>
+    <div class="review-body">
+      <h3 class="review-name">${entry.name}</h3>
+      <p class="review-area">${entry.area}</p>
       <div class="review-bars">
         <div class="bar-row">
           <span class="bar-label">${t("crispLabel")}</span>
@@ -162,12 +150,17 @@ function showReview(id) {
     </div>
   `;
 
-  document.getElementById("back-btn").addEventListener("click", () => {
-    activeId = null;
-    updateMarkers();
-    mainMap.setView(TRONDHEIM_CENTER, DEFAULT_ZOOM, { animate: true });
-    renderList();
-  });
+  overlay.classList.add("is-open");
+
+  document.getElementById("review-close-btn").addEventListener("click", closeReview);
+}
+
+function closeReview() {
+  activeId = null;
+  updateMarkers();
+  renderHighscore();
+  mainMap.setView(TRONDHEIM_CENTER, DEFAULT_ZOOM, { animate: true });
+  document.getElementById("review-overlay").classList.remove("is-open");
 }
 
 function initGameScreen() {
@@ -176,7 +169,7 @@ function initGameScreen() {
 
   setTimeout(() => {
     mainMap.invalidateSize();
-  }, 300);
+  }, 350);
 }
 
 function initLangSwitcher() {
@@ -185,10 +178,9 @@ function initLangSwitcher() {
       setLanguage(btn.dataset.lang);
       document.querySelectorAll(".lang-btn").forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
+      renderHighscore();
       if (activeId) {
         showReview(activeId);
-      } else {
-        renderList();
       }
     });
   });
@@ -199,11 +191,10 @@ function initLangSwitcher() {
 setLanguage("no");
 initPeekMap();
 initMainMap();
-renderList();
+renderHighscore();
 initLangSwitcher();
 
 document.getElementById("start-btn").addEventListener("click", initGameScreen);
-
 document.getElementById("station-count").textContent = OFFICIAL_RANKINGS.length;
 
 window.addEventListener("resize", () => {

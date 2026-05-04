@@ -3,13 +3,13 @@ const translations = {
     siteTitle: "Trondheim Fries",
     siteSubtitle: "Jakten på den perfekte pommes frites",
     heroLead:
-      "Pommes frites er den ultimate snacksen. Sprø på utsiden, myk på innsiden — en enkel rett som få mestrer.",
+      "Pommes frites er den beste snacksen som finnes. Sprø utenpå, myk inni. Enkelt, billig, og perfekt. Trenger ikke koste en formue — trenger bare å være godt.",
     heroBody:
-      "Dette er én persons quest gjennom Trondheims gater for å finne hvem som virkelig fortjener tronen. Ikke alle steder lager dem like godt, og det er derfor denne siden finnes.",
+      "Ikke alle steder lager fries like godt. Noen er slappe, noen er brent, noen er bare trist. Denne siden er min quest for å finne hvem som faktisk fortjener respekt i Trondheim. Min smak, mine regler.",
     heroStart: "Start quest",
     mapHeading: "Verdenskartet",
     mapHint: "Velg en lokasjon for å lese anmeldelsen.",
-    listHeading: "Alle stasjoner",
+    listHeading: "Highscore",
     reviewBack: "← Tilbake til liste",
     reviewVisit: "Besøkt",
     aboutHeading: "Om denne questen",
@@ -26,13 +26,13 @@ const translations = {
     siteTitle: "Trondheim Fries",
     siteSubtitle: "The quest for the perfect French fry",
     heroLead:
-      "French fries are the ultimate snack food. Crispy outside, soft inside — a simple dish that few truly master.",
+      "French fries are the best snack food there is. Crispy outside, soft inside. Simple, cheap, and perfect. Doesn't need to cost a fortune — just needs to be good.",
     heroBody:
-      "This is one person's quest through the streets of Trondheim to find who truly deserves the throne. Not every place makes them well, and that's why this page exists.",
+      "Not every place makes fries well. Some are floppy, some are burnt, some are just sad. This page is my quest to find who actually deserves respect in Trondheim. My taste, my rules.",
     heroStart: "Start quest",
     mapHeading: "World Map",
     mapHint: "Select a location to read the review.",
-    listHeading: "All stations",
+    listHeading: "Highscore",
     reviewBack: "← Back to list",
     reviewVisit: "Visited",
     aboutHeading: "About this quest",
