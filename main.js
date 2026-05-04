@@ -9,6 +9,7 @@ const OFFICIAL_RANKINGS = [
     name: "Baklandet Basket",
     area: "Baklandet",
     note: "Thick cut, double-fried crunch, salt that actually sticks.",
+    noteNo: "Tykke kutt, dobbelt-stekt sprøhet, salt som faktisk fester seg.",
     lat: 63.4289,
     lng: 10.4021,
   },
@@ -18,6 +19,7 @@ const OFFICIAL_RANKINGS = [
     name: "Solsiden Shoestring",
     area: "Solsiden",
     note: "Skinny boys, high heat, dangerous levels of crisp.",
+    noteNo: "Tynne pinner, høy varme, farlig sprøhetsgrad.",
     lat: 63.4302,
     lng: 10.4065,
   },
@@ -27,6 +29,7 @@ const OFFICIAL_RANKINGS = [
     name: "Midtbyen Munch",
     area: "Midtbyen",
     note: "Reliable golden ratio: crispy shell, fluffy cloud inside.",
+    noteNo: "Pålitelig gyllen ratio: sprøtt skall, luftig sky inni.",
     lat: 63.4344,
     lng: 10.3951,
   },
@@ -36,6 +39,7 @@ const OFFICIAL_RANKINGS = [
     name: "Ila Iron Skillet",
     area: "Ila",
     note: "Duck-fat rumours may be true. Either way: worth the walk.",
+    noteNo: "Ryktene om andefett kan stemme. Uansett: verdt turen.",
     lat: 63.4275,
     lng: 10.3758,
   },
@@ -45,6 +49,7 @@ const OFFICIAL_RANKINGS = [
     name: "Lade Long Fries",
     area: "Lade",
     note: "Long sticks, sea breeze optional, vinegar highly recommended.",
+    noteNo: "Lange pinner, sjøbris valgfritt, eddik sterkt anbefalt.",
     lat: 63.4412,
     lng: 10.4418,
   },
@@ -58,23 +63,26 @@ const DEFAULT_ZOOM = 13;
 
 const markersById = new Map();
 
+function getNote(entry) {
+  return getLanguage() === "no" ? entry.noteNo : entry.note;
+}
+
 function buildRankCard(entry) {
   const li = document.createElement("li");
   li.className = "rank-card";
   li.dataset.id = entry.id;
   li.tabIndex = 0;
   li.setAttribute("role", "button");
-  li.setAttribute("aria-label", `Rank ${entry.rank}: ${entry.name}`);
+  li.setAttribute("aria-label", `#${entry.rank}: ${entry.name}`);
 
   li.innerHTML = `
-    <h3 class="rank-card__name"></h3>
-    <p class="rank-card__area"></p>
-    <p class="rank-card__note"></p>
+    <span class="rank-card__rank">${entry.rank}</span>
+    <div class="rank-card__body">
+      <h3 class="rank-card__name">${entry.name}</h3>
+      <p class="rank-card__area">${entry.area}</p>
+      <p class="rank-card__note">${getNote(entry)}</p>
+    </div>
   `;
-
-  li.querySelector(".rank-card__name").textContent = entry.name;
-  li.querySelector(".rank-card__area").textContent = entry.area;
-  li.querySelector(".rank-card__note").textContent = entry.note;
 
   return li;
 }
@@ -97,10 +105,12 @@ function setActive(id) {
 }
 
 function initMap() {
-  const map = L.map(mapEl, { scrollWheelZoom: true }).setView(
-    TRONDHEIM_CENTER,
-    DEFAULT_ZOOM
-  );
+  const map = L.map(mapEl, {
+    scrollWheelZoom: true,
+    zoomControl: false,
+  }).setView(TRONDHEIM_CENTER, DEFAULT_ZOOM);
+
+  L.control.zoom({ position: "bottomright" }).addTo(map);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
@@ -110,13 +120,13 @@ function initMap() {
 
   OFFICIAL_RANKINGS.forEach((entry, i) => {
     const rot = -8 + (i % 5) * 4;
-    const html = `<div class="fry-marker" style="--rot:${rot}deg"></div>`;
+    const html = `<div class="fry-marker" data-rank="${entry.rank}" style="--rot:${rot}deg"><span class="fry-marker__rank">${entry.rank}</span></div>`;
     const icon = L.divIcon({
       className: "fry-marker-wrap",
       html,
-      iconSize: [20, 40],
-      iconAnchor: [10, 40],
-      popupAnchor: [0, -36],
+      iconSize: [24, 48],
+      iconAnchor: [12, 48],
+      popupAnchor: [0, -44],
     });
 
     const marker = L.marker([entry.lat, entry.lng], { icon }).addTo(map);
@@ -153,10 +163,44 @@ function initList(map) {
   });
 }
 
+function rebuildList(map) {
+  listEl.innerHTML = "";
+  initList(map);
+}
+
+function initLangSwitcher(map) {
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.dataset.lang;
+      setLanguage(lang);
+      rebuildList(map);
+      document.querySelectorAll(".lang-btn").forEach((b) => b.classList.remove("is-active"));
+      btn.classList.add("is-active");
+    });
+  });
+  const defaultBtn = document.querySelector('.lang-btn[data-lang="no"]');
+  if (defaultBtn) defaultBtn.classList.add("is-active");
+}
+
+setLanguage("no");
 const map = initMap();
 initList(map);
+initLangSwitcher(map);
 
 requestAnimationFrame(() => {
   map.invalidateSize();
 });
 window.addEventListener("resize", () => map.invalidateSize());
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", (e) => {
+    const target = document.querySelector(anchor.getAttribute("href"));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth" });
+      if (anchor.getAttribute("href") === "#map-section") {
+        setTimeout(() => map.invalidateSize(), 400);
+      }
+    }
+  });
+});

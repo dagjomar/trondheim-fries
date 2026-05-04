@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="The official ranking of the best French fries in Trondheim, Norway — one opinion, carved in potato."
+      content="Jakten på den perfekte pommes frites i Trondheim — én mening, ristet i potet."
     />
-    <title>Trondheim Fries — Official Fry Rankings</title>
+    <title>Trondheim Fries — Pommes Frites Rangering</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,51 +24,67 @@
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
-    <div class="ketchup-splatter ketchup-splatter--1" aria-hidden="true"></div>
-    <div class="ketchup-splatter ketchup-splatter--2" aria-hidden="true"></div>
 
-    <header class="site-header">
-      <div class="site-header__inner">
-        <p class="site-tag">Trondheim · Norway</p>
-        <h1 class="site-title">
-          <span class="site-title__main">Trondheim</span>
-          <span class="site-title__fries">Fries</span>
+    <!-- Hero Section -->
+    <section class="section section--hero" id="hero">
+      <div class="hero-content">
+        <p class="hero-tag">Trondheim · Norge</p>
+        <h1 class="hero-title">
+          <span class="hero-title__main">Trondheim</span>
+          <span class="hero-title__fries">Fries</span>
         </h1>
-        <p class="site-lede">
-          One curated list. Crispy edges, soft middles, and the honest truth about
-          who actually nails the chip in this town.
-        </p>
-        <div class="ranking-pill" role="status">
-          <span class="ranking-pill__dot" aria-hidden="true"></span>
-          Official ranking — v1
+        <p class="hero-subtitle" data-i18n="siteSubtitle"></p>
+        <div class="hero-prose">
+          <p data-i18n="heroLead"></p>
+          <p data-i18n="heroBody"></p>
         </div>
-        <p class="site-note">
-          Audience picks may land here later. For now, this is the single source
-          of truth.
-        </p>
+        <nav class="hero-nav" aria-label="Seksjon-navigasjon">
+          <a href="#map-section" class="btn btn--primary" data-i18n="scrollToMap"></a>
+          <a href="#list-section" class="btn btn--secondary" data-i18n="scrollToList"></a>
+        </nav>
       </div>
-    </header>
+      <div class="hero-fry-decoration" aria-hidden="true">
+        <div class="fry-stick fry-stick--1"></div>
+        <div class="fry-stick fry-stick--2"></div>
+        <div class="fry-stick fry-stick--3"></div>
+        <div class="fry-stick fry-stick--4"></div>
+        <div class="fry-stick fry-stick--5"></div>
+      </div>
+    </section>
 
-    <main class="layout">
-      <section class="panel panel--map" aria-labelledby="map-heading">
-        <div class="panel__toolbar">
-          <h2 id="map-heading" class="panel__title">The fry map</h2>
-          <p class="panel__hint">Tap a stick to see who it is.</p>
-        </div>
-        <div id="map" class="map-root" role="application" aria-label="Map of ranked fry spots in Trondheim"></div>
-      </section>
+    <!-- Map Section (full viewport) -->
+    <section class="section section--map" id="map-section">
+      <div class="section-header section-header--overlay">
+        <h2 data-i18n="mapHeading"></h2>
+        <p data-i18n="mapHint"></p>
+      </div>
+      <div id="map" class="map-fullscreen" role="application" aria-label="Kart over rangerte steder i Trondheim"></div>
+    </section>
 
-      <section class="panel panel--list" aria-labelledby="list-heading">
-        <div class="panel__toolbar">
-          <h2 id="list-heading" class="panel__title">The official board</h2>
-          <p class="panel__hint">Order is law. Salt is optional.</p>
-        </div>
-        <ol class="rank-list" id="rank-list"></ol>
-      </section>
-    </main>
+    <!-- Rankings List Section -->
+    <section class="section section--list" id="list-section">
+      <div class="section-header">
+        <h2 data-i18n="listHeading"></h2>
+        <p data-i18n="listHint"></p>
+      </div>
+      <ol class="rank-list" id="rank-list"></ol>
+    </section>
 
+    <!-- About Section -->
+    <section class="section section--about" id="about-section">
+      <div class="about-content">
+        <h2 data-i18n="aboutHeading"></h2>
+        <p data-i18n="aboutText"></p>
+      </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="site-footer">
-      <p>Made with grease and conviction. Swap in your real venues in <code>main.js</code>.</p>
+      <p data-i18n="footerText"></p>
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="no" aria-label="Norsk">🇳🇴 Norsk</button>
+        <button class="lang-btn" data-lang="en" aria-label="English">🇬🇧 English</button>
+      </div>
     </footer>
 
     <script
@@ -76,6 +92,7 @@
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""
     ></script>
+    <script src="i18n.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
