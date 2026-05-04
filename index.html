@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="The official ranking of the best French fries in Trondheim, Norway — one opinion, carved in potato."
+    />
+    <title>Trondheim Fries — Official Fry Rankings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chewy&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="ketchup-splatter ketchup-splatter--1" aria-hidden="true"></div>
+    <div class="ketchup-splatter ketchup-splatter--2" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <p class="site-tag">Trondheim · Norway</p>
+        <h1 class="site-title">
+          <span class="site-title__main">Trondheim</span>
+          <span class="site-title__fries">Fries</span>
+        </h1>
+        <p class="site-lede">
+          One curated list. Crispy edges, soft middles, and the honest truth about
+          who actually nails the chip in this town.
+        </p>
+        <div class="ranking-pill" role="status">
+          <span class="ranking-pill__dot" aria-hidden="true"></span>
+          Official ranking — v1
+        </div>
+        <p class="site-note">
+          Audience picks may land here later. For now, this is the single source
+          of truth.
+        </p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel panel--map" aria-labelledby="map-heading">
+        <div class="panel__toolbar">
+          <h2 id="map-heading" class="panel__title">The fry map</h2>
+          <p class="panel__hint">Tap a stick to see who it is.</p>
+        </div>
+        <div id="map" class="map-root" role="application" aria-label="Map of ranked fry spots in Trondheim"></div>
+      </section>
+
+      <section class="panel panel--list" aria-labelledby="list-heading">
+        <div class="panel__toolbar">
+          <h2 id="list-heading" class="panel__title">The official board</h2>
+          <p class="panel__hint">Order is law. Salt is optional.</p>
+        </div>
+        <ol class="rank-list" id="rank-list"></ol>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Made with grease and conviction. Swap in your real venues in <code>main.js</code>.</p>
+    </footer>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="main.js"></script>
+  </body>
+</html>
