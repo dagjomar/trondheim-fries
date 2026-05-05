@@ -3,20 +3,12 @@
 
 <header class="site-nav">
 	<div class="site-nav-inner">
-		<a class="wordmark" href="/">TRD_FRIES</a>
+		<a class="wordmark" href="#hero">TRD_FRIES</a>
 
-		<nav class="nav-desktop" aria-label="Primær navigasjon">
-			<a class="nav-link nav-active" href="#archive">ARKIV</a>
-			<a class="nav-link" href="#">KART</a>
-			<a class="nav-link" href="/about">OM OSS</a>
+		<nav class="nav-jump" aria-label="Snarveier på siden">
+			<a class="jump-link" href="#hero">Intro</a>
+			<a class="jump-link" href="#leaderboard">Lederne</a>
 		</nav>
-
-		<div class="nav-actions">
-			<button type="button" class="btn-abonn"> ABONNER </button>
-			<button type="button" class="btn-meny" aria-label="Meny">
-				<span class="material-symbols-outlined">menu</span>
-			</button>
-		</div>
 	</div>
 </header>
 
@@ -27,27 +19,28 @@
 		left: 0;
 		right: 0;
 		z-index: 50;
-		height: var(--top-bar-height);
+		min-height: var(--top-bar-height);
 		display: flex;
-		align-items: stretch;
+		align-items: center;
 		background: var(--color-nav-bg);
-		border-bottom: var(--border-nav) solid var(--color-text);
+		border-bottom: var(--border-thin) solid var(--color-outline);
 	}
 
 	.site-nav-inner {
 		width: 100%;
 		max-width: var(--container-max);
 		margin: 0 auto;
-		padding: 0 clamp(1rem, 4vw, 1.5rem);
+		padding: 0 clamp(0.75rem, 3vw, 1.25rem);
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		gap: var(--space-2);
+		min-height: var(--top-bar-height);
 	}
 
 	.wordmark {
 		font-family: var(--font-display);
-		font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+		font-size: clamp(1.05rem, 3.2vw, 1.35rem);
 		font-weight: 900;
 		font-style: italic;
 		text-transform: uppercase;
@@ -56,129 +49,38 @@
 		text-decoration: none;
 		line-height: 1;
 		white-space: nowrap;
+		flex-shrink: 0;
 	}
 
 	.wordmark:hover {
 		color: var(--color-accent-gold-dim);
 	}
 
-	.nav-desktop {
-		display: none;
-		align-items: stretch;
-		height: 100%;
-	}
-
-	@media (min-width: 768px) {
-		.nav-desktop {
-			display: flex;
-		}
-
-		.btn-meny {
-			display: none;
-		}
-	}
-
-	.nav-link {
+	.nav-jump {
 		display: flex;
 		align-items: center;
-		align-self: stretch;
-		padding: 0 1rem;
-		font-family: var(--font-display);
-		font-size: clamp(0.75rem, 1.5vw, 0.9375rem);
-		font-weight: 700;
+		justify-content: flex-end;
+		gap: 0.35rem 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	.jump-link {
+		font-family: var(--font-meta);
+		font-size: 0.6875rem;
+		font-weight: 600;
 		text-transform: uppercase;
-		letter-spacing: -0.03em;
-		color: var(--color-text);
+		letter-spacing: 0.1em;
+		color: color-mix(in oklab, var(--color-text) 72%, transparent);
 		text-decoration: none;
+		padding: 0.2rem 0;
+		border-bottom: 1px solid transparent;
 		transition:
-			background 0.18s ease,
-			color 0.18s ease;
-		border-radius: var(--radius-none);
+			color 0.15s ease,
+			border-color 0.15s ease;
 	}
 
-	.nav-link:hover {
-		background: var(--color-text);
-		color: var(--color-nav-bg);
-	}
-
-	.nav-active {
-		background: var(--color-accent-gold);
-		color: #0f0f0f;
-	}
-
-	.nav-active:hover {
-		background: var(--color-accent-gold-dim);
-		color: #0f0f0f;
-	}
-
-	.nav-actions {
-		display: flex;
-		align-items: stretch;
-		gap: 0;
-		margin-right: calc(-1 * clamp(1rem, 4vw, 1.5rem));
-		align-self: stretch;
-	}
-
-	.btn-abonn {
-		display: none;
-		align-items: center;
-		padding: 0 1rem;
-		font-family: var(--font-display);
-		font-size: clamp(0.65rem, 1.5vw, 0.6875rem);
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
+	.jump-link:hover {
 		color: var(--color-accent-gold);
-		background: transparent;
-		border: var(--border-thin) solid var(--color-accent-gold);
-		cursor: pointer;
-		transition:
-			background 0.18s ease,
-			color 0.18s ease;
-		border-radius: var(--radius-none);
-		white-space: nowrap;
-	}
-
-	@media (min-width: 480px) {
-		.btn-abonn {
-			display: flex;
-		}
-
-		.nav-actions {
-			margin-right: 0;
-		}
-	}
-
-	.btn-abonn:hover {
-		background: var(--color-accent-gold);
-		color: #221b00;
-	}
-
-	.btn-meny {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		min-width: 3.75rem;
-		padding: 0 1rem;
-		color: var(--color-accent-gold);
-		background: transparent;
-		border: none;
-		border-left: var(--border-thin) solid var(--color-outline);
-		cursor: pointer;
-		transition:
-			background 0.18s ease,
-			color 0.18s ease;
-		align-self: stretch;
-		height: auto;
-		min-height: 100%;
-	}
-
-	.btn-meny:hover {
-		background: var(--color-text);
-		color: var(--color-nav-bg);
-	}
-
-	.btn-meny .material-symbols-outlined {
-		font-size: 1.75rem;
+		border-bottom-color: var(--color-accent-gold);
 	}
 </style>

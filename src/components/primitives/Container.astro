@@ -2,12 +2,13 @@
 interface Props {
 	as?: keyof HTMLElementTagNameMap;
 	class?: string;
+	id?: string;
 }
 
-const { as = 'div', class: className = '' } = Astro.props;
+const { as = 'div', class: className = '', id } = Astro.props;
 const Tag = as;
 ---
 
-<Tag class={`container ${className}`.trim()}>
+<Tag class={`container ${className}`.trim()} id={id}>
 	<slot />
 </Tag>

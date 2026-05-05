@@ -6,7 +6,7 @@ const heroImage =
 	'https://lh3.googleusercontent.com/aida-public/AB6AXuCMGTASeKhslK6NEFR9qfD2hnVm22O0m_eiMOmPop2jYIIb74BXwI3sf2s30GITCXT-VwvRflhTtXu1T9kix4C5_ESsncQgr0J68I9W2Pt4vnfi4_MJ1vl6oCv2y8L18RjOianC-ARW-iF08WLXkLRJzweGQPWswLIeTGHBqc9Afv1gUBBWxPTc2-vKbT9cWy10zzjfh3HjVicGsBU2mIHQ_rn9Vja3_r3J_FoYgXXRxST8f5WLroSOWkICGjPGBYhK9eC0u7nG8w';
 ---
 
-<Container as="section" class="hero-guiden">
+<Container as="section" class="hero-guiden" id="hero">
 	<div class="hero-guiden-inner">
 		<div class="hero-copy">
 			<h1 class="hero-title">Når du bare vil ha pommes frites…</h1>
@@ -20,7 +20,7 @@ const heroImage =
 			</div>
 			<div class="hero-cta">
 				<Button href="#leaderboard">Se lederne</Button>
-				<Button href="#archive" variant="outline">Utforsk arkivet</Button>
+				<Button href="#arkiv" variant="outline">Utforsk arkivet</Button>
 			</div>
 		</div>
 		<div class="hero-visual">
@@ -47,19 +47,17 @@ const heroImage =
 </Container>
 
 <style>
-	/* Same horizontal rhythm as arkiv: `.container` + 2fr | 1fr from 900px. */
+	/* Same rhythm as arkiv: `.container` + `gap: var(--space-3)` + 2fr | 1fr from 900px. */
 	.hero-guiden {
 		padding-top: 0;
+		scroll-margin-top: var(--top-bar-height);
 	}
 
 	.hero-guiden-inner {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 0;
+		gap: var(--space-3);
 		min-height: min(32rem, 70dvh);
-		border: var(--border-thin) solid var(--color-outline);
-		background: var(--color-surface);
-		overflow: hidden;
 	}
 
 	.hero-copy {
@@ -68,7 +66,8 @@ const heroImage =
 		justify-content: flex-end;
 		padding: var(--space-4) var(--space-3);
 		background: var(--color-surface);
-		border-bottom: var(--border-thin) solid var(--color-outline);
+		border: var(--border-thin) solid var(--color-outline);
+		overflow: hidden;
 	}
 
 	.hero-title {
@@ -129,6 +128,7 @@ const heroImage =
 		overflow: hidden;
 		background: var(--color-surface-3);
 		min-height: 14rem;
+		border: var(--border-thin) solid var(--color-outline);
 	}
 
 	.hero-img {
@@ -166,8 +166,6 @@ const heroImage =
 		}
 
 		.hero-copy {
-			border-right: var(--border-thin) solid var(--color-outline);
-			border-bottom: none;
 			padding: var(--space-5) var(--space-4);
 		}
 

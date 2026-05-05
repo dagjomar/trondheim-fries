@@ -45,5 +45,6 @@
 
 	/* Chrome (mockup-aligned) */
 	--color-nav-bg: #0f0f0f;
-	--top-bar-height: 6rem;
+	/* Slim fixed bar (minimal M1 shell) */
+	--top-bar-height: 3.5rem;
 }
