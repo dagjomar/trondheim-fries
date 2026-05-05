@@ -2,8 +2,8 @@
 import Container from '../primitives/Container.astro';
 import Button from '../primitives/Button.astro';
 
-const heroImage =
-	'https://lh3.googleusercontent.com/aida-public/AB6AXuCMGTASeKhslK6NEFR9qfD2hnVm22O0m_eiMOmPop2jYIIb74BXwI3sf2s30GITCXT-VwvRflhTtXu1T9kix4C5_ESsncQgr0J68I9W2Pt4vnfi4_MJ1vl6oCv2y8L18RjOianC-ARW-iF08WLXkLRJzweGQPWswLIeTGHBqc9Afv1gUBBWxPTc2-vKbT9cWy10zzjfh3HjVicGsBU2mIHQ_rn9Vja3_r3J_FoYgXXRxST8f5WLroSOWkICGjPGBYhK9eC0u7nG8w';
+/** Local asset: `public/images/hero-frites.jpg` (see `public/images/CREDITS.txt`). */
+const heroImage = '/images/hero-frites.jpg';
 ---
 
 <Container as="section" class="hero-guiden" id="hero">
@@ -22,9 +22,9 @@ const heroImage =
 			<img
 				class="hero-img"
 				src={heroImage}
-				alt="Frityrstekt perfeksjon"
-				width="900"
-				height="1200"
+				alt="Nærbilde av sprø, gyllen pommes frites"
+				width="4000"
+				height="2667"
 				loading="eager"
 				decoding="async"
 			/>
