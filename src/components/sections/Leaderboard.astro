@@ -6,7 +6,7 @@ import { venues } from '../../data/venues';
 
 <Container as="section" class="leaderboard-wrap" id="arkiv">
 	<div class="section-head" id="leaderboard">
-		<h2 class="section-title">Top_03</h2>
+		<h2 class="section-title">Top_04</h2>
 	</div>
 
 	<p class="section-lede">
@@ -64,7 +64,10 @@ import { venues } from '../../data/venues';
 
 		.cards {
 			display: grid;
-			grid-template-columns: repeat(3, minmax(0, 1fr));
+			grid-template-columns: repeat(
+				auto-fit,
+				minmax(min(100%, 18rem), 1fr)
+			);
 			gap: var(--space-3);
 			align-items: stretch;
 		}

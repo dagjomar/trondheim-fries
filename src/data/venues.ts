@@ -1,5 +1,5 @@
-/** Milestone 1: all spots on one page (no detail routes). Starts with top 3 only;
- *  when there are many venues, we can add «Se alle» inline expansion again. */
+/** Milestone 1: all spots on one page (no detail routes). Current leaderboard count
+ *  is small; when there are many venues, we can add «Se alle» inline expansion again. */
 export type Venue = {
 	rank: number;
 	name: string;
@@ -21,16 +21,29 @@ const imgHero =
 export const venues: Venue[] = [
 	{
 		rank: 1,
+		name: 'Krambua',
+		score: '9,9',
+		blurb:
+			'Krambugata gav en utrolig overraskende herlig opplevelse. Perfekt stekt, god smak, hint av potetskall, lagd fra bunnen av! Passe størrelse på en porsjon.',
+		traits: 'HJEMMELAGET · SENTRUM',
+		image: imgHero,
+		mapUrl:
+			'https://www.google.com/maps/search/?api=1&query=Krambugata+12+7010+Trondheim',
+		websiteUrl: 'https://www.krambuatrondheim.no/',
+		updated: '05.05.2026',
+	},
+	{
+		rank: 2,
 		name: 'SuperHero Burger',
 		score: '9,8',
 		blurb: 'Trippel-tilberedt med en tekstur som trosser tyngdekraften.',
 		traits: 'SPRØHET · HØY',
-		image: imgHero,
+		image: img,
 		mapUrl: 'https://www.google.com/maps/search/?api=1&query=SuperHero+Burger+Trondheim',
 		updated: '12.05.2024',
 	},
 	{
-		rank: 2,
+		rank: 3,
 		name: 'Bror',
 		score: '9,2',
 		blurb: 'Røff kutting, eksepsjonell crunch og en signatur krydderblanding.',
@@ -40,7 +53,7 @@ export const venues: Venue[] = [
 		updated: '15.05.2024',
 	},
 	{
-		rank: 3,
+		rank: 4,
 		name: 'Kef',
 		score: '8,9',
 		blurb: 'Den klassiske stilen perfeksjonert. Alltid varme, alltid sprø.',
