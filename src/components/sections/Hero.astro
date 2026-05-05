@@ -9,18 +9,13 @@ const heroImage =
 <Container as="section" class="hero-guiden" id="hero">
 	<div class="hero-guiden-inner">
 		<div class="hero-copy">
-			<h1 class="hero-title">Når du bare vil ha pommes frites…</h1>
+			<h1 class="hero-title">Når du bare vil ha litt god pommes frites…</h1>
 			<p class="hero-intro">
 				Enten du er på besøk eller bor her fast, hender det at du bare vil ha enkle og raske fries, ikke sant?
 				Denne siden er kuratert for å finne den absolutte beste crunchen i Trondheim.
 			</p>
-			<div class="chips">
-				<span class="chip chip-solid">ETABL. 2024</span>
-				<span class="chip chip-outline">TRD // NO</span>
-			</div>
 			<div class="hero-cta">
-				<Button href="#leaderboard">Se lederne</Button>
-				<Button href="#arkiv" variant="outline">Utforsk arkivet</Button>
+				<Button href="#leaderboard" class="hero-cta-primary">Se lederne</Button>
 			</div>
 		</div>
 		<div class="hero-visual">
@@ -82,45 +77,45 @@ const heroImage =
 	}
 
 	.hero-intro {
-		margin: 0 0 var(--space-5);
+		margin: 0 0 var(--space-4);
 		font-size: var(--text-body-md);
 		line-height: 1.6;
 		color: var(--color-text-muted);
 		max-width: 38ch;
 	}
 
-	.chips {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-2);
-		margin-bottom: var(--space-4);
-	}
-
-	.chip {
-		font-family: var(--font-meta);
-		font-size: var(--text-meta);
-		font-weight: 500;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		padding: 0.35rem 0.75rem;
-	}
-
-	.chip-solid {
-		background: var(--color-accent-red);
-		color: #fff;
-		border: var(--border-thin) solid var(--color-accent-red);
-	}
-
-	.chip-outline {
-		color: var(--color-outline-strong);
-		border: var(--border-thin) solid var(--color-outline-strong);
-		background: transparent;
-	}
-
 	.hero-cta {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-2);
+		display: block;
+		margin-top: var(--space-1);
+	}
+
+	.hero-cta :global(.hero-cta-primary) {
+		width: 100%;
+		max-width: 22rem;
+		padding: 1.05rem 1.5rem;
+		font-size: 0.8125rem;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+		border-width: 2px;
+		text-decoration: none;
+		box-sizing: border-box;
+		transition: transform 0.15s ease, filter 0.15s ease;
+	}
+
+	.hero-cta :global(.hero-cta-primary:hover) {
+		filter: brightness(1.06);
+	}
+
+	.hero-cta :global(.hero-cta-primary:active) {
+		transform: scale(0.99);
+	}
+
+	@media (min-width: 900px) {
+		.hero-cta :global(.hero-cta-primary) {
+			max-width: 26rem;
+			padding: 1.15rem 1.75rem;
+			font-size: 0.875rem;
+		}
 	}
 
 	.hero-visual {

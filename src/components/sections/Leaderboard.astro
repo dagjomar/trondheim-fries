@@ -2,18 +2,15 @@
 import Container from '../primitives/Container.astro';
 import VenueCard from './VenueCard.astro';
 import { venues } from '../../data/venues';
-
-const total = venues.length;
 ---
 
 <Container as="section" class="leaderboard-wrap" id="arkiv">
 	<div class="section-head" id="leaderboard">
 		<h2 class="section-title">Top_03</h2>
-		<span class="section-vol meta">VOL. 2026.01 · {total} OPPFØRINGER</span>
 	</div>
 
 	<p class="section-lede">
-		Kuraterte steder på forsiden — ingen egen underside per sted i milepæl 1.
+		Disse er så langt rangert blant de beste stedene for pommes frites i Trondheim.
 	</p>
 
 	<div class="cards">
@@ -30,10 +27,6 @@ const total = venues.length;
 	}
 
 	.section-head {
-		display: flex;
-		align-items: flex-end;
-		justify-content: space-between;
-		gap: var(--space-2);
 		padding-bottom: var(--space-2);
 		margin-bottom: var(--space-2);
 		border-bottom: 4px solid var(--color-accent-gold);
@@ -51,24 +44,11 @@ const total = venues.length;
 		color: var(--color-text);
 	}
 
-	.section-vol {
-		opacity: 0.6;
-		text-align: right;
-		max-width: 12rem;
-	}
-
 	.section-lede {
 		margin: 0 0 var(--space-4);
 		font-size: var(--text-body-md);
 		line-height: 1.5;
 		color: var(--color-text-muted);
-	}
-
-	.meta {
-		font-family: var(--font-meta);
-		font-size: var(--text-meta);
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
 	}
 
 	.cards {
