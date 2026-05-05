@@ -3,30 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Jakten på den perfekte pommes frites i Trondheim — en retro-inspirert frites-quest."
-    />
+    <meta name="description" content="Jakten på den perfekte pommes frites i Trondheim — en 2D retro game-quest." />
     <title>Trondheim Fries — Pommes Frites Quest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Scanlines overlay -->
     <div class="scanlines" aria-hidden="true"></div>
 
-    <!-- Hero / Title Screen -->
+    <!-- Title Screen -->
     <section class="title-screen" id="title-screen">
       <div class="title-screen__content">
         <div class="pixel-border title-card">
@@ -45,38 +32,33 @@
           <span class="btn-start__icon">▶</span>
           <span data-i18n="heroStart"></span>
         </button>
+        <div class="title-controls">
+          <p class="title-controls__text">← → ↑ ↓ WALK &nbsp;&nbsp; ENTER = ENTER SHOP</p>
+        </div>
         <div class="title-coins" aria-hidden="true">
-          <span class="coin">🍟</span>
-          <span class="coin">🍟</span>
-          <span class="coin">🍟</span>
+          <span class="coin">🍟</span><span class="coin">🍟</span><span class="coin">🍟</span>
         </div>
       </div>
-      <div class="title-screen__map-peek" aria-hidden="true">
-        <div id="map-peek"></div>
+      <div class="title-screen__preview">
+        <div class="preview-grid">
+          <div class="preview-tile preview-tile--grass"></div>
+          <div class="preview-tile preview-tile--road"></div>
+          <div class="preview-tile preview-tile--water"></div>
+          <div class="preview-tile preview-tile--building"></div>
+          <div class="preview-tile preview-tile--shop"></div>
+          <div class="preview-tile preview-tile--tree"></div>
+        </div>
+        <p class="preview-hint">Explore pixel Trondheim</p>
       </div>
     </section>
 
-    <!-- Main Game Screen -->
+    <!-- Game Screen -->
     <section class="game-screen" id="game-screen">
-      <!-- Highscore list (narrow left panel) -->
-      <aside class="highscore-panel" id="highscore-panel">
-        <div class="highscore-panel__header pixel-border-bottom">
-          <h2 class="highscore-panel__title" data-i18n="listHeading"></h2>
-          <span class="highscore-panel__count" id="station-count"></span>
-        </div>
-        <ol class="highscore-list" id="highscore-list"></ol>
-      </aside>
-
-      <!-- Map (takes rest of space) -->
-      <div class="map-panel" id="map-panel">
-        <div id="map" class="map-container" role="application" aria-label="Kart over rangerte steder i Trondheim"></div>
-
-        <!-- Review overlay (slides up from bottom-right) -->
-        <div class="review-overlay" id="review-overlay">
-          <div class="review-overlay__content" id="review-content">
-            <!-- Injected by JS -->
-          </div>
-        </div>
+      <div class="game-world" id="game-world">
+        <canvas id="game-canvas"></canvas>
+      </div>
+      <div class="review-overlay" id="review-overlay">
+        <div class="review-overlay__content" id="review-content"></div>
       </div>
     </section>
 
@@ -89,13 +71,11 @@
       </div>
     </footer>
 
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
     <script src="i18n.js"></script>
     <script src="data.js"></script>
+    <script src="sprites.js"></script>
+    <script src="tilemap.js"></script>
+    <script src="engine.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
