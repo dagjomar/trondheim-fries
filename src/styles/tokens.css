@@ -1,0 +1,49 @@
+:root {
+	/* Color system */
+	--color-bg: #131313;
+	--color-surface: #1c1b1b;
+	--color-surface-2: #201f1f;
+	--color-surface-3: #2a2a2a;
+	--color-surface-lowest: #0e0e0e;
+	--color-nav-active: #ffe16d;
+	--color-text: #e5e2e1;
+	--color-text-muted: #d0c6ab;
+	--color-outline: #4d4732;
+	--color-outline-strong: #999077;
+	--color-accent-gold: #ffd700;
+	--color-accent-gold-dim: #e9c400;
+	--color-accent-red: #d32f2f;
+	--color-accent-red-deep: #a40213;
+
+	/* Typography */
+	--font-display: "Noto Serif", serif;
+	--font-body: "Work Sans", sans-serif;
+	--font-meta: "Space Grotesk", sans-serif;
+
+	--text-display-xl: clamp(3rem, 7.5vw, 5.25rem);
+	--text-headline-lg: clamp(2rem, 4.4vw, 3rem);
+	--text-headline-md: clamp(1.55rem, 3vw, 2rem);
+	--text-body-lg: 1.125rem;
+	--text-body-md: 1rem;
+	--text-meta: 0.75rem;
+	--text-label: 0.6875rem;
+
+	/* Layout and spacing */
+	--space-1: 0.5rem;
+	--space-2: 1rem;
+	--space-3: 1.5rem;
+	--space-4: 2rem;
+	--space-5: 3rem;
+	--space-6: 4rem;
+	--container-max: 90rem;
+	--content-max: 72rem;
+
+	/* Shape and borders */
+	--radius-none: 0;
+	--border-thin: 1px;
+	--border-nav: 4px;
+
+	/* Chrome (mockup-aligned) */
+	--color-nav-bg: #0f0f0f;
+	--top-bar-height: 6rem;
+}

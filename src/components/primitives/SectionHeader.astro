@@ -1,0 +1,19 @@
+---
+interface Props {
+	index?: string;
+	title: string;
+	class?: string;
+}
+
+const { index, title, class: className = '' } = Astro.props;
+const label = index ? `${index} / ${title}` : title;
+---
+
+<h2 class={`section-header meta ${className}`.trim()}>{label}</h2>
+
+<style>
+	.section-header {
+		margin: 0 0 var(--space-3);
+		color: var(--color-accent-gold);
+	}
+</style>

@@ -1,0 +1,91 @@
+---
+import Container from './primitives/Container.astro';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<Container class="footer-inner">
+		<div class="brand">TRD_FRIES</div>
+		<div class="links">
+			<a href="#">INSTAGRAM</a>
+			<a href="#">TIKTOK</a>
+			<a href="#">SEND INN</a>
+			<a href="#">JURIDISK</a>
+		</div>
+		<div class="copyright">
+			© {year} TRD_FRIES · ALDRI GODTA MYKE FRIES · TRONDHEIM
+		</div>
+	</Container>
+</footer>
+
+<style>
+	.site-footer {
+		margin-top: var(--space-6);
+		background: var(--color-nav-bg);
+		border-top: var(--border-nav) solid var(--color-text);
+	}
+
+	.footer-inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-3);
+		padding: var(--space-6) var(--space-3);
+		text-align: center;
+	}
+
+	.brand {
+		font-family: var(--font-display);
+		font-size: var(--text-headline-md);
+		font-weight: 700;
+		font-style: italic;
+		text-transform: uppercase;
+		letter-spacing: -0.04em;
+		color: var(--color-accent-gold);
+	}
+
+	.links {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: var(--space-2) var(--space-3);
+	}
+
+	.links a {
+		font-family: var(--font-meta);
+		font-size: var(--text-meta);
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--color-text-muted);
+		text-decoration: none;
+	}
+
+	.links a:hover {
+		color: var(--color-accent-gold);
+	}
+
+	.copyright {
+		font-family: var(--font-meta);
+		font-size: var(--text-label);
+		color: var(--color-text-muted);
+		max-width: 36rem;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	@media (min-width: 768px) {
+		.footer-inner {
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			text-align: left;
+		}
+
+		.copyright {
+			width: 100%;
+			text-align: center;
+			margin-top: var(--space-1);
+		}
+	}
+</style>

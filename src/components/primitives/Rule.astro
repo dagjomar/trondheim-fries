@@ -1,0 +1,17 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<hr class={`rule-line ${className}`.trim()} />
+
+<style>
+	.rule-line {
+		margin: 0;
+		border: 0;
+		border-top: var(--border-thin) solid var(--color-outline);
+	}
+</style>

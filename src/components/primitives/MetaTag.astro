@@ -1,0 +1,21 @@
+---
+interface Props {
+	as?: keyof HTMLElementTagNameMap;
+	class?: string;
+}
+
+const { as = 'span', class: className = '' } = Astro.props;
+const Tag = as;
+---
+
+<Tag class={`meta-tag meta ${className}`.trim()}>
+	<slot />
+</Tag>
+
+<style>
+	.meta-tag {
+		display: inline-flex;
+		gap: var(--space-1);
+		align-items: center;
+	}
+</style>

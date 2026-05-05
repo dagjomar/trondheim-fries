@@ -1,0 +1,104 @@
+---
+import Container from '../primitives/Container.astro';
+import SectionHeader from '../primitives/SectionHeader.astro';
+import Rule from '../primitives/Rule.astro';
+
+const stats = [
+	{ label: 'Sprøhetsindeks', value: 0.92 },
+	{ label: 'Saltfordeling', value: 0.75 },
+	{ label: 'Umami-dybde', value: 0.88 },
+];
+
+function labelKey(label: string): string {
+	return label.replace(/\s+/g, '_').toUpperCase();
+}
+---
+
+<Container as="section" class="panel" id="stats">
+	<SectionHeader index="03" title="Smaksnotater" />
+	<Rule />
+	<div class="stats-panel">
+		{
+			stats.map((stat) => (
+				<div class="stat-block">
+					<div class="stat-head">
+						<span class="label">{labelKey(stat.label)}</span>
+						<span class="value">{stat.value.toFixed(2)}</span>
+					</div>
+					<div class="bar" role="presentation">
+						<span class="bar-fill" style={`width: ${Math.round(stat.value * 100)}%`} />
+					</div>
+				</div>
+			))
+		}
+	</div>
+</Container>
+
+<style>
+	.panel {
+		padding-top: var(--space-2);
+	}
+
+	.stats-panel {
+		margin-top: var(--space-3);
+		display: grid;
+		gap: var(--space-3);
+		padding: var(--space-3);
+		border: var(--border-thin) solid var(--color-outline);
+		background: var(--color-surface);
+	}
+
+	.stat-block {
+		display: grid;
+		gap: var(--space-1);
+	}
+
+	.stat-head {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: var(--space-2);
+	}
+
+	.label {
+		font-family: var(--font-meta);
+		font-size: var(--text-meta);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--color-text-muted);
+	}
+
+	.value {
+		font-family: var(--font-display);
+		font-size: var(--text-headline-md);
+		color: var(--color-accent-gold);
+		line-height: 1;
+	}
+
+	.bar {
+		height: 4px;
+		background: var(--color-surface-3);
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.bar-fill {
+		display: block;
+		height: 100%;
+		background: var(--color-accent-gold);
+		transition: width 0.4s ease;
+	}
+
+	@media (min-width: 900px) {
+		.stats-panel {
+			grid-template-columns: repeat(3, 1fr);
+			gap: var(--space-4);
+			padding: var(--space-4);
+		}
+
+		.stat-block:not(:first-child) {
+			border-left: var(--border-thin) solid var(--color-outline);
+			padding-left: var(--space-4);
+		}
+	}
+</style>

@@ -1,0 +1,59 @@
+---
+interface Props {
+	href?: string;
+	variant?: 'primary' | 'outline';
+	class?: string;
+}
+
+const { href, variant = 'primary', class: className = '' } = Astro.props;
+const classes = `btn btn-${variant} ${className}`.trim();
+---
+
+{
+	href ? (
+		<a class={classes} href={href}>
+			<slot />
+		</a>
+	) : (
+		<button class={classes} type="button">
+			<slot />
+		</button>
+	)
+}
+
+<style>
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.7rem 1.15rem;
+		border: var(--border-thin) solid transparent;
+		font-family: var(--font-meta);
+		font-size: var(--text-label);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		line-height: 1;
+	}
+
+	.btn-primary {
+		background: var(--color-accent-gold);
+		color: #221b00;
+		border-color: #221b00;
+	}
+
+	.btn-primary:hover {
+		background: var(--color-accent-gold-dim);
+		color: #221b00;
+	}
+
+	.btn-outline {
+		background: transparent;
+		color: var(--color-accent-gold);
+		border-color: var(--color-accent-gold);
+	}
+
+	.btn-outline:hover {
+		background: color-mix(in oklab, var(--color-accent-gold) 12%, transparent);
+	}
+</style>
