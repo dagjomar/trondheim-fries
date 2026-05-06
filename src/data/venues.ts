@@ -52,14 +52,4 @@ export const venues: Venue[] = [
 		mapUrl: 'https://www.google.com/maps/search/?api=1&query=Bror+restaurant+Trondheim',
 		updated: '15.05.2024',
 	},
-	{
-		rank: 4,
-		name: 'Kef',
-		score: '8,9',
-		blurb: 'Den klassiske stilen perfeksjonert. Alltid varme, alltid sprø.',
-		traits: 'KLASSISK · STABILE BATCHER',
-		image: img,
-		mapUrl: 'https://www.google.com/maps/search/?api=1&query=Kef+Diner+Trondheim',
-		updated: '18.05.2024',
-	},
 ];
