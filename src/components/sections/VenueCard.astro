@@ -59,19 +59,6 @@ const featured = venue.rank === 1;
 
 	<div class="card-foot">
 		<span class="meta updated">Oppdatert: {venue.updated}</span>
-		{
-			featured ? (
-				<span
-					class="material-symbols-outlined icon-star"
-					aria-hidden="true"
-					style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24"
-				>
-					star
-				</span>
-			) : (
-				<span class="card-foot-spacer" aria-hidden="true" />
-			)
-		}
 	</div>
 </article>
 
@@ -224,7 +211,6 @@ const featured = venue.rank === 1;
 
 	.card-foot {
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
 		gap: var(--space-2);
 	}
@@ -234,17 +220,6 @@ const featured = venue.rank === 1;
 		text-transform: none;
 		letter-spacing: 0.05em;
 		font-size: 0.6875rem;
-	}
-
-	.icon-star {
-		color: var(--color-accent-red-deep);
-		font-size: 1.5rem;
-	}
-
-	.card-foot-spacer {
-		width: 1.5rem;
-		height: 1.5rem;
-		flex-shrink: 0;
 	}
 
 	@media (min-width: 900px) {
