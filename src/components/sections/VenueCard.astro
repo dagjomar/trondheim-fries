@@ -11,15 +11,10 @@ const featured = venue.rank === 1;
 
 <article class:list={['card', featured && 'card-featured']}>
 	<div class="card-top">
-		<span
-			class:list={['rank', featured ? 'rank-gold' : 'rank-muted']}
-			aria-label={`Plass ${venue.rank}`}
-		>
+		<span class="rank" aria-label={`Plass ${venue.rank}`}>
 			#{String(venue.rank).padStart(2, '0')}
 		</span>
-		<span
-			class:list={['score-chip', featured ? 'score-chip-gold' : 'score-chip-muted']}
-		>
+		<span class="score-chip">
 			POENG: {venue.score}
 		</span>
 	</div>
@@ -94,15 +89,7 @@ const featured = venue.rank === 1;
 		font-style: italic;
 		line-height: 0.95;
 		letter-spacing: -0.03em;
-	}
-
-	.rank-gold {
 		color: var(--color-accent-gold);
-	}
-
-	.rank-muted {
-		color: var(--color-text);
-		opacity: 0.4;
 	}
 
 	.score-chip {
@@ -111,18 +98,9 @@ const featured = venue.rank === 1;
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
 		padding: 0.35rem 0.5rem;
-		border: var(--border-thin) solid;
+		border: var(--border-thin) solid var(--color-accent-gold);
 		flex-shrink: 0;
-	}
-
-	.score-chip-gold {
 		color: var(--color-accent-gold);
-		border-color: var(--color-accent-gold);
-	}
-
-	.score-chip-muted {
-		color: color-mix(in oklab, var(--color-text) 60%, transparent);
-		border-color: color-mix(in oklab, var(--color-text) 20%, transparent);
 	}
 
 	.venue {
