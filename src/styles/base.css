@@ -10,6 +10,14 @@ body {
 	padding: 0;
 }
 
+/*
+ * Fixed top bar overlaps fragment targets; prefer scroll-padding on the scroll
+ * container for #hash navigation (broader/simpler than per-target scroll-margin).
+ */
+html {
+	scroll-padding-top: calc(var(--top-bar-height) + var(--border-thin));
+}
+
 .material-symbols-outlined {
 	font-family: "Material Symbols Outlined";
 	font-weight: normal;

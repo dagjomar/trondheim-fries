@@ -45,7 +45,6 @@ const heroImage = '/images/trondheim-fries.jpg';
 	/* Same rhythm as arkiv: `.container` + `gap: var(--space-3)` + 2fr | 1fr from 900px. */
 	.hero-guiden {
 		padding-top: 0;
-		scroll-margin-top: var(--top-bar-height);
 	}
 
 	.hero-guiden-inner {
@@ -110,14 +109,6 @@ const heroImage = '/images/trondheim-fries.jpg';
 		transform: scale(0.99);
 	}
 
-	@media (min-width: 900px) {
-		.hero-cta :global(.hero-cta-primary) {
-			max-width: 26rem;
-			padding: 1.15rem 1.75rem;
-			font-size: 0.875rem;
-		}
-	}
-
 	.hero-visual {
 		position: relative;
 		overflow: hidden;
@@ -157,11 +148,13 @@ const heroImage = '/images/trondheim-fries.jpg';
 		.hero-guiden-inner {
 			grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
 			align-items: stretch;
-			min-height: min(36rem, 75dvh);
+			/* Shorter than mobile-relative 75dvh: less empty band above copy on wide viewports */
+			min-height: min(30rem, 62dvh);
 		}
 
 		.hero-copy {
-			padding: var(--space-5) var(--space-4);
+			justify-content: flex-start;
+			padding: var(--space-4) var(--space-4) var(--space-5);
 		}
 
 		.hero-visual {
@@ -170,6 +163,12 @@ const heroImage = '/images/trondheim-fries.jpg';
 
 		.hero-img {
 			min-height: 100%;
+		}
+
+		.hero-cta :global(.hero-cta-primary) {
+			max-width: 26rem;
+			padding: 1.15rem 1.75rem;
+			font-size: 0.875rem;
 		}
 	}
 </style>
