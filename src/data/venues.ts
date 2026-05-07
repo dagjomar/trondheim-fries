@@ -64,3 +64,4 @@ export const venues: Venue[] = [
 // - Texas Grill House
 // - Søstrene Karlsen
 // - McDonald's (sentral)
+// - Burger King
