@@ -53,3 +53,15 @@ export const venues: Venue[] = [
 		updated: '15.05.2024',
 	},
 ];
+
+// Forslag til neste pommes-tester (Trondheim):
+// - E.C. Dahls Pub & Restaurant
+// - ØX Tap Room
+// - Rock Burger
+// - Burger.no
+// - Den Gode Nabo
+// - Big Horn Steak House
+// - Trondhjem Mikrobryggeri
+// - Texas Grill House
+// - Søstrene Karlsen
+// - McDonald's (sentral)
