@@ -31,6 +31,21 @@ export const venues: Venue[] = [
 		websiteUrl: 'https://www.krambuatrondheim.no/',
 		updated: '05.05.2026',
 	},
+	{
+		rank: 2,
+		name: 'Burger.no (Byhaven)',
+		score: '8,8',
+		blurb:
+			'Sprø og god, men nesten litt for mye på én gang — mye dill og kraftig smak. ' +
+			'Sitter igjen med fett, frityr og dill; utrolig mektig. ' +
+			'59 kr uten dipp er utrolig mye for pengene; veldig fornøyd, men dill-ettersmaken henger lenge.',
+		traits: 'DILL · SPRØ · PRISSTERKT',
+		image: img,
+		mapUrl:
+			'https://www.google.com/maps/search/?api=1&query=Burger.no+Byhaven+Olav+Tryggvasons+gate+Trondheim',
+		websiteUrl: 'https://burger.no/',
+		updated: '09.05.2026',
+	},
 	// {
 	// 	rank: 2,
 	// 	name: 'SuperHero Burger',
@@ -57,7 +72,6 @@ export const venues: Venue[] = [
 // - E.C. Dahls Pub & Restaurant
 // - ØX Tap Room
 // - Rock Burger
-// - Burger.no
 // - Den Gode Nabo
 // - Big Horn Steak House
 // - Trondhjem Mikrobryggeri
