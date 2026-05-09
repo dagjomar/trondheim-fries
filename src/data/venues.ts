@@ -17,6 +17,9 @@ const img =
 
 const imgKrambua = '/images/restaurants/krambua/snitzel-721612.jpg';
 
+/** Close-up pommes photo — add file at this path (see public/images/restaurants/burger-no/). */
+const imgBurgerNo = '/images/restaurants/burger-no/burger-no-closeup.jpg';
+
 export const venues: Venue[] = [
 	{
 		rank: 1,
@@ -40,7 +43,7 @@ export const venues: Venue[] = [
 			'Sitter igjen med fett, frityr og dill; utrolig mektig. ' +
 			'59 kr uten dipp er utrolig mye for pengene; veldig fornøyd, men dill-ettersmaken henger lenge.',
 		traits: 'DILL · SPRØ · PRISSTERKT',
-		image: img,
+		image: imgBurgerNo,
 		mapUrl:
 			'https://www.google.com/maps/search/?api=1&query=Burger.no+Byhaven+Olav+Tryggvasons+gate+Trondheim',
 		websiteUrl: 'https://burger.no/',
