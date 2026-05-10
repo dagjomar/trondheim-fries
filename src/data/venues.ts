@@ -1,8 +1,17 @@
 /** Milestone 1: all spots on one page (no detail routes). Current leaderboard count
  *  is small; when there are many venues, we can add «Se alle» inline expansion again.
- *  Linjære plasseringer (#01 …) brukes ikke — alle på listen er i samme topp-sjikt. */
+ *  Linjære plasseringer (#01 …) brukes ikke — innen hvert sjikt er ikke rekkefølge rangering. */
+export type VenueTier = 'top' | 'great';
+
+/** Vises på kortet — `top` = blant de beste i Trondheim; `great` et hakk under. */
+export const TIER_LABELS: Record<VenueTier, string> = {
+	top: 'Topp-sjiktet',
+	great: 'Ganske bra',
+};
+
 export type Venue = {
 	name: string;
+	tier: VenueTier;
 	/** Pommes-porsjon, kr (slik det var ved besøket). */
 	priceNok: number;
 	score: string;
@@ -23,12 +32,10 @@ const imgKrambua = '/images/restaurants/krambua/snitzel-721612.jpg';
 const imgBurgerNo =
 	'/images/restaurants/burger.no/burger-no-closeup-fries.jpg';
 
-/** Vises på hvert kort — ingen rangering mellom disse. */
-export const TOP_TIER_LABEL = 'Topp-sjiktet';
-
 export const venues: Venue[] = [
 	{
 		name: 'Krambua',
+		tier: 'top',
 		priceNok: 89,
 		score: '9,9',
 		blurb:
@@ -42,6 +49,7 @@ export const venues: Venue[] = [
 	},
 	{
 		name: 'Burger.no (Byhaven)',
+		tier: 'top',
 		priceNok: 59,
 		score: '8,8',
 		blurb:
@@ -54,6 +62,20 @@ export const venues: Venue[] = [
 			'https://www.google.com/maps/search/?api=1&query=Burger.no+Byhaven+Olav+Tryggvasons+gate+Trondheim',
 		websiteUrl: 'https://burger.no/',
 		updated: '09.05.2026',
+	},
+	{
+		name: 'Cafe Løkka',
+		tier: 'great',
+		priceNok: 60,
+		score: '8,0',
+		blurb:
+			'Cafe Løkka har i lang tid vært en av favorittene, men har dessverre tapt seg fra topp-sjiktet de siste årene. ' +
+			'60,- uten dipp er ganske billig, men samtidig er det relativt liten porsjon. Pro-tip: spør om ekstra stekt for å få den ekstra gode sprøheten.',
+		traits: 'KAFÉ · LØKKAVEITA',
+		image: img,
+		mapUrl:
+			'https://www.google.com/maps/search/?api=1&query=Cafe+L%C3%B8kka+Trondheim',
+		updated: '10.05.2026',
 	},
 	// {
 	// 	name: 'SuperHero Burger',

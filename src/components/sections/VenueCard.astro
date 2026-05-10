@@ -1,5 +1,5 @@
 ---
-import { TOP_TIER_LABEL, type Venue } from '../../data/venues';
+import { TIER_LABELS, type Venue } from '../../data/venues';
 
 interface Props {
 	venue: Venue;
@@ -7,12 +7,16 @@ interface Props {
 }
 
 const { venue, imageLoading = 'lazy' } = Astro.props;
+const tierLabel = TIER_LABELS[venue.tier];
 ---
 
 <article class="card">
 	<div class="card-top">
-		<span class="tier-badge" aria-label={TOP_TIER_LABEL}>
-			{TOP_TIER_LABEL}
+		<span
+			class:list={['tier-badge', venue.tier === 'great' && 'tier-badge--great']}
+			aria-label={tierLabel}
+		>
+			{tierLabel}
 		</span>
 		<span
 			class="price-chip"
@@ -92,6 +96,10 @@ const { venue, imageLoading = 'lazy' } = Astro.props;
 		letter-spacing: -0.02em;
 		color: var(--color-accent-gold);
 		max-width: 9rem;
+	}
+
+	.tier-badge--great {
+		color: var(--color-text-muted);
 	}
 
 	.price-chip {
