@@ -25,9 +25,9 @@ const tierMuted = venue.tier !== 'top' && venue.tier !== 'second';
 		</div>
 		<span
 			class="price-chip"
-			aria-label={`Pommes ${venue.priceNok} kroner`}
+			aria-label={venue.priceNok === 0 ? 'Pris ukjent' : `Pommes ${venue.priceNok} kroner`}
 		>
-			{venue.priceNok},- kr
+			{venue.priceNok === 0 ? '? ,-' : `${venue.priceNok},- kr`}
 		</span>
 	</div>
 
