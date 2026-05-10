@@ -1,7 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import SiteTopBar from '../components/SiteTopBar.astro';
-import SiteBottomNav from '../components/SiteBottomNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import Hero from '../components/sections/Hero.astro';
@@ -20,7 +19,6 @@ import Leaderboard from '../components/sections/Leaderboard.astro';
 			<Leaderboard />
 		</main>
 		<SiteFooter />
-		<SiteBottomNav />
 	</body>
 </html>
 
@@ -29,12 +27,6 @@ import Leaderboard from '../components/sections/Leaderboard.astro';
 		display: grid;
 		gap: var(--space-6);
 		padding-top: var(--top-bar-height);
-		padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0));
-	}
-
-	@media (min-width: 768px) {
-		.landing main {
-			padding-bottom: var(--space-6);
-		}
+		padding-bottom: calc(var(--space-6) + env(safe-area-inset-bottom, 0));
 	}
 </style>
