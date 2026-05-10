@@ -1,4 +1,5 @@
 ---
+import FriesScore from '../FriesScore.astro';
 import { TIER_LABELS, type Venue } from '../../data/venues';
 
 interface Props {
@@ -8,16 +9,20 @@ interface Props {
 
 const { venue, imageLoading = 'lazy' } = Astro.props;
 const tierLabel = TIER_LABELS[venue.tier];
+const tierMuted = venue.tier !== 'top' && venue.tier !== 'second';
 ---
 
 <article class="card">
 	<div class="card-top">
-		<span
-			class:list={['tier-badge', venue.tier === 'great' && 'tier-badge--great']}
-			aria-label={tierLabel}
-		>
-			{tierLabel}
-		</span>
+		<div class="tier-label-group">
+			<span
+				class:list={['tier-badge', tierMuted && 'tier-badge--muted']}
+				aria-label={tierLabel}
+			>
+				{tierLabel}
+			</span>
+			<FriesScore tier={venue.tier} size="sm" />
+		</div>
 		<span
 			class="price-chip"
 			aria-label={`Pommes ${venue.priceNok} kroner`}
@@ -86,6 +91,14 @@ const tierLabel = TIER_LABELS[venue.tier];
 		margin-bottom: clamp(0.75rem, 1.8vw, var(--space-2));
 	}
 
+	.tier-label-group {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		min-width: 0;
+		flex-wrap: wrap;
+	}
+
 	.tier-badge {
 		display: inline-block;
 		font-family: var(--font-display);
@@ -98,7 +111,7 @@ const tierLabel = TIER_LABELS[venue.tier];
 		max-width: 9rem;
 	}
 
-	.tier-badge--great {
+	.tier-badge--muted {
 		color: var(--color-text-muted);
 	}
 

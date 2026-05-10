@@ -1,0 +1,91 @@
+---
+import {
+	TIER_FRIES_ALT,
+	TIER_FRIES_SRC,
+	type VenueTier,
+} from '../data/venues';
+
+interface Props {
+	tier: VenueTier;
+	size?: 'sm' | 'md' | 'lg' | 'xl';
+}
+
+const { tier, size = 'md' } = Astro.props;
+const friesSrc = TIER_FRIES_SRC[tier];
+const altNor = TIER_FRIES_ALT[tier];
+---
+
+<span
+	class:list={[
+		'fries-score',
+		size === 'sm' && 'fries-score--sm',
+		size === 'md' && 'fries-score--md',
+		size === 'lg' && 'fries-score--lg',
+		size === 'xl' && 'fries-score--xl',
+	]}
+>
+	<img
+		class="fries-score__img"
+		src={friesSrc}
+		alt={altNor}
+		width={640}
+		height={200}
+		loading="lazy"
+		decoding="async"
+	/>
+</span>
+
+<style is:global>
+	.fries-score {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		line-height: 0;
+		flex-shrink: 0;
+	}
+
+	.fries-score__img {
+		display: block;
+		width: auto;
+		max-width: 100%;
+		height: auto;
+		vertical-align: bottom;
+		filter: saturate(1.06) brightness(1.03);
+	}
+
+	.fries-score--sm .fries-score__img {
+		height: 1.375rem;
+	}
+
+	.fries-score--md .fries-score__img {
+		height: 1.875rem;
+	}
+
+	.fries-score--xl .fries-score__img {
+		height: 2.875rem;
+	}
+
+	@media (min-width: 900px) {
+		.fries-score--sm .fries-score__img {
+			height: 1.5rem;
+		}
+
+		.fries-score--md .fries-score__img {
+			height: 2.125rem;
+		}
+
+		.fries-score--lg .fries-score__img {
+			height: 2.625rem;
+		}
+
+		.fries-score--xl .fries-score__img {
+			height: 3.75rem;
+		}
+	}
+
+	@media (max-width: 899px) {
+		.fries-score--lg .fries-score__img {
+			height: 2.125rem;
+		}
+	}
+</style>

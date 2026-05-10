@@ -1,12 +1,56 @@
-/** Milestone 1: all spots on one page (no detail routes). Current leaderboard count
- *  is small; when there are many venues, we can add «Se alle» inline expansion again.
- *  Linjære plasseringer (#01 …) brukes ikke — innen hvert sjikt er ikke rekkefølge rangering. */
-export type VenueTier = 'top' | 'great';
+/** Milestone 1: all spots on one page (no detail routes). Linjære plasseringer (#01 …) brukes
+ *  ikke — innen hvert sjikt er ikke rekkefølge rangering.
+ *
+ * Sprite-bilder: `public/images/fries-score/` — rated bruker `fries-{1–4}.png`, `unrated` bruker
+ * `fries-unrated.png`. */
+export type VenueTier = 'top' | 'second' | 'ok' | 'miss' | 'unrated';
 
-/** Vises på kortet — `top` = blant de beste i Trondheim; `great` et hakk under. */
+/** Rekkefølge på forsiden og i data (best først). */
+export const TIER_ORDER: readonly VenueTier[] = [
+	'top',
+	'second',
+	'ok',
+	'miss',
+	'unrated',
+] as const;
+
+/** Rute til sprite per sjikt. */
+export const TIER_FRIES_SRC: Record<VenueTier, string> = {
+	top: '/images/fries-score/fries-4.png',
+	second: '/images/fries-score/fries-3.png',
+	ok: '/images/fries-score/fries-2.png',
+	miss: '/images/fries-score/fries-1.png',
+	unrated: '/images/fries-score/fries-unrated.png',
+};
+
+/** Vises på kortet og som hovedtittel for hvert sjikt på forsiden. */
 export const TIER_LABELS: Record<VenueTier, string> = {
 	top: 'Topp-sjiktet',
-	great: 'Ganske bra',
+	second: 'Nest best',
+	ok: 'Innafor',
+	miss: 'Bomtur',
+	unrated: 'Ikke vurdert',
+};
+
+/** Kort intro under hvert sjikt (innen sjikt er ikke rekkefølge rangering). */
+export const TIER_DESCRIPTIONS: Record<VenueTier, string> = {
+	top: 'Det vi helst ville valgt på nytt — som aldri skuffer. Gjentagende og konsekvent kvalitet, smak og sprøhet. De har gjort seg fortjent til å bli husket som de beste.',
+	second:
+		'Helt ok andrevalg når man ikke har mulighet til å besøke de aller beste. Ingenting i veien med disse, men kan ha små mangler som ikke gjør dem perfekte valg hver gang.',
+	ok: 'Som regel ikke noe høydare, men om man ikke kan gå noe andre steder så får det duge. Men ikke forvent noe spesielt.',
+	miss:
+		'Etter å ha prøvd disse, har de blitt vurdert som ikke verdt å prøve igjen. De har sannsynligvis noe annet godt på menyen, men fries er det ikke.',
+	unrated:
+		'Disse har ikke blitt vurdert ennå, men er på kartet. Vi gleder oss til å prøve dem.',
+};
+
+/** Korte alt-tekster for fries-spritene på kort og i sjiktitlerader. */
+export const TIER_FRIES_ALT: Record<VenueTier, string> = {
+	top: 'Fire pommessymbol som illustrerer sjiktet',
+	second: 'Tre pommessymbol som illustrerer sjiktet',
+	ok: 'To pommessymbol som illustrerer sjiktet',
+	miss: 'Ett pommessymbol som illustrerer sjiktet',
+	unrated: 'Pommes-plassholder for ikke vurderte steder',
 };
 
 export type Venue = {
@@ -65,7 +109,7 @@ export const venues: Venue[] = [
 	},
 	{
 		name: 'Cafe Løkka',
-		tier: 'great',
+		tier: 'second',
 		priceNok: 60,
 		score: '8,0',
 		blurb:
