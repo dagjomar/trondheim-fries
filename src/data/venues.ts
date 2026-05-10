@@ -128,7 +128,8 @@ export const venues: Venue[] = [
 		score: '—',
 		blurb: 'Ikke vurdert ennå.',
 		traits: 'IKKE VURDERT',
-		image: img,
+		image:
+			'https://lh3.googleusercontent.com/gps-proxy/ALd4DhHxU4EbrHwwQvHMYDndql0Wk8NYZf_sUZfN-7A_VwejjpEbO0ViDzSleEzip6yWL0JPE28OPbJEz5rc53JR6wmA7z7gbOlXxO7q7HhaP4huaAgtJOVo91JRhbmIXJHd1UKuA1cH5j1pZ8lGCNyR_jDRsfgcgoBAqOKgOloHVubrcKUato8CjODgKg=s462-k-no',
 		mapUrl:
 			'https://www.google.com/maps/search/?api=1&query=Kompis+sorgenfri+Trondheim',
 		updated: '10.05.2026',
