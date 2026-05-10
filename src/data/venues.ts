@@ -3,6 +3,8 @@
  *  Linjære plasseringer (#01 …) brukes ikke — alle på listen er i samme topp-sjikt. */
 export type Venue = {
 	name: string;
+	/** Pommes-porsjon, kr (slik det var ved besøket). */
+	priceNok: number;
 	score: string;
 	blurb: string;
 	traits: string;
@@ -27,6 +29,7 @@ export const TOP_TIER_LABEL = 'Topp-sjiktet';
 export const venues: Venue[] = [
 	{
 		name: 'Krambua',
+		priceNok: 89,
 		score: '9,9',
 		blurb:
 			'Krambugata gav en utrolig overraskende herlig opplevelse. Perfekt stekt, god smak, hint av potetskall, lagd fra bunnen av! Passe størrelse på en porsjon.',
@@ -39,10 +42,11 @@ export const venues: Venue[] = [
 	},
 	{
 		name: 'Burger.no (Byhaven)',
+		priceNok: 59,
 		score: '8,8',
 		blurb:
 			'Dette er en must-have når det gjelder pommes i Trondheim — jeg ville ikke vært foruten denne, og anbefaler alle å prøve den minst én gang. ' +
-			'Sprø, mye dill og kraftig smak; 59 kr uten dipp er utrolig mye for pengene. ' +
+			'Sprø, mye dill og kraftig smak; uten dipp er det utrolig mye for pengene. ' +
 			'Likevel så mektig at jeg ikke nødvendigvis velger den hver gang jeg bare skal ha litt fries.',
 		traits: 'DILL · SPRØ · PRISSTERKT',
 		image: imgBurgerNo,
@@ -53,6 +57,7 @@ export const venues: Venue[] = [
 	},
 	// {
 	// 	name: 'SuperHero Burger',
+	// 	priceNok: 0,
 	// 	score: '9,8',
 	// 	blurb: 'Trippel-tilberedt med en tekstur som trosser tyngdekraften.',
 	// 	traits: 'SPRØHET · HØY',
@@ -62,6 +67,7 @@ export const venues: Venue[] = [
 	// },
 	// {
 	// 	name: 'Bror',
+	// 	priceNok: 0,
 	// 	score: '9,2',
 	// 	blurb: 'Røff kutting, eksepsjonell crunch og en signatur krydderblanding.',
 	// 	traits: 'SALT · BALANSERT',
