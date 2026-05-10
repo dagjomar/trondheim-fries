@@ -1,18 +1,18 @@
 ---
-import type { Venue } from '../../data/venues';
+import { TOP_TIER_LABEL, type Venue } from '../../data/venues';
 
 interface Props {
 	venue: Venue;
+	imageLoading?: 'eager' | 'lazy';
 }
 
-const { venue } = Astro.props;
-const featured = venue.rank === 1;
+const { venue, imageLoading = 'lazy' } = Astro.props;
 ---
 
-<article class:list={['card', featured && 'card-featured']}>
+<article class="card">
 	<div class="card-top">
-		<span class="rank" aria-label={`Plass ${venue.rank}`}>
-			#{String(venue.rank).padStart(2, '0')}
+		<span class="tier-badge" aria-label={TOP_TIER_LABEL}>
+			{TOP_TIER_LABEL}
 		</span>
 		<!--span class="score-chip">
 			POENG: {venue.score}
@@ -21,7 +21,7 @@ const featured = venue.rank === 1;
 
 	<div class="card-body">
 		<h3 class="venue">{venue.name}</h3>
-		<p class:list={['blurb', featured && 'blurb-italic']}>{venue.blurb}</p>
+		<p class="blurb">{venue.blurb}</p>
 		<p class="traits meta">{venue.traits}</p>
 	</div>
 
@@ -31,7 +31,7 @@ const featured = venue.rank === 1;
 			alt={`${venue.name}: pommes frites`}
 			width={800}
 			height={450}
-			loading={featured ? 'eager' : 'lazy'}
+			loading={imageLoading}
 			decoding="async"
 			class="media-img"
 		/>
@@ -66,11 +66,7 @@ const featured = venue.rank === 1;
 		transition: background 0.2s ease;
 	}
 
-	.card-featured {
-		transition: transform 0.2s ease, background 0.2s ease;
-	}
-
-	.card-featured:hover {
+	.card:hover {
 		background: var(--color-surface-2);
 	}
 
@@ -82,14 +78,15 @@ const featured = venue.rank === 1;
 		margin-bottom: var(--space-3);
 	}
 
-	.rank {
+	.tier-badge {
 		font-family: var(--font-display);
-		font-size: clamp(2.5rem, 8vw, 3.25rem);
+		font-size: clamp(1.5rem, 5vw, 2rem);
 		font-weight: 700;
 		font-style: italic;
-		line-height: 0.95;
+		line-height: 1.05;
 		letter-spacing: -0.03em;
 		color: var(--color-accent-gold);
+		max-width: 12rem;
 	}
 
 	.score-chip {
@@ -117,10 +114,6 @@ const featured = venue.rank === 1;
 		font-size: var(--text-body-md);
 		line-height: 1.5;
 		color: var(--color-text-muted);
-	}
-
-	.blurb-italic {
-		font-style: italic;
 	}
 
 	.traits {

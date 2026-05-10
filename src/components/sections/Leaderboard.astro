@@ -7,14 +7,18 @@ import { venues } from '../../data/venues';
 <Container as="section" class="leaderboard-wrap" id="arkiv">
 	<div class="section-head" id="leaderboard">
 		<h2 class="section-title">Fasit</h2>
+		<p class="section-kicker">Topp-sjiktet i Trondheim</p>
 	</div>
 
 	<p class="section-lede">
-		Denne listen blir fortløpende oppdatert og korrigert dersom fasit endrer seg.
+		Rekkefølgen er ikke rangering — stedene her står i samme klasse. Listen oppdateres
+		fortløpende når fasit endrer seg.
 	</p>
 
 	<div class="cards">
-		{venues.map((venue) => <VenueCard venue={venue} />)}
+		{venues.map((venue, i) => (
+			<VenueCard venue={venue} imageLoading={i === 0 ? 'eager' : 'lazy'} />
+		))}
 	</div>
 </Container>
 
@@ -40,6 +44,16 @@ import { venues } from '../../data/venues';
 		letter-spacing: -0.04em;
 		line-height: 1;
 		color: var(--color-text);
+	}
+
+	.section-kicker {
+		margin: var(--space-2) 0 0;
+		font-family: var(--font-meta);
+		font-size: var(--text-meta);
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--color-text-muted);
+		line-height: 1.2;
 	}
 
 	.section-lede {

@@ -1,7 +1,7 @@
 /** Milestone 1: all spots on one page (no detail routes). Current leaderboard count
- *  is small; when there are many venues, we can add «Se alle» inline expansion again. */
+ *  is small; when there are many venues, we can add «Se alle» inline expansion again.
+ *  Linjære plasseringer (#01 …) brukes ikke — alle på listen er i samme topp-sjikt. */
 export type Venue = {
-	rank: number;
 	name: string;
 	score: string;
 	blurb: string;
@@ -21,9 +21,11 @@ const imgKrambua = '/images/restaurants/krambua/snitzel-721612.jpg';
 const imgBurgerNo =
 	'/images/restaurants/burger.no/burger-no-closeup-fries.jpg';
 
+/** Vises på hvert kort — ingen rangering mellom disse. */
+export const TOP_TIER_LABEL = 'Topp-sjiktet';
+
 export const venues: Venue[] = [
 	{
-		rank: 1,
 		name: 'Krambua',
 		score: '9,9',
 		blurb:
@@ -36,7 +38,6 @@ export const venues: Venue[] = [
 		updated: '05.05.2026',
 	},
 	{
-		rank: 2,
 		name: 'Burger.no (Byhaven)',
 		score: '8,8',
 		blurb:
@@ -51,7 +52,6 @@ export const venues: Venue[] = [
 		updated: '09.05.2026',
 	},
 	// {
-	// 	rank: 2,
 	// 	name: 'SuperHero Burger',
 	// 	score: '9,8',
 	// 	blurb: 'Trippel-tilberedt med en tekstur som trosser tyngdekraften.',
@@ -61,7 +61,6 @@ export const venues: Venue[] = [
 	// 	updated: '12.05.2024',
 	// },
 	// {
-	// 	rank: 3,
 	// 	name: 'Bror',
 	// 	score: '9,2',
 	// 	blurb: 'Røff kutting, eksepsjonell crunch og en signatur krydderblanding.',
