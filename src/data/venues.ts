@@ -17,8 +17,9 @@ const img =
 
 const imgKrambua = '/images/restaurants/krambua/snitzel-721612.jpg';
 
-/** Close-up pommes photo — add file at this path (see public/images/restaurants/burger-no/). */
-const imgBurgerNo = '/images/restaurants/burger-no/burger-no-closeup.jpg';
+/** Close-up pommes photo: `public/images/restaurants/burger.no/burger-no-closeup-fries.jpg`. */
+const imgBurgerNo =
+	'/images/restaurants/burger.no/burger-no-closeup-fries.jpg';
 
 export const venues: Venue[] = [
 	{
@@ -39,9 +40,9 @@ export const venues: Venue[] = [
 		name: 'Burger.no (Byhaven)',
 		score: '8,8',
 		blurb:
-			'Sprø og god, men nesten litt for mye på én gang — mye dill og kraftig smak. ' +
-			'Sitter igjen med fett, frityr og dill; utrolig mektig. ' +
-			'59 kr uten dipp er utrolig mye for pengene; veldig fornøyd, men dill-ettersmaken henger lenge.',
+			'Dette er en must-have når det gjelder pommes i Trondheim — jeg ville ikke vært foruten denne, og anbefaler alle å prøve den minst én gang. ' +
+			'Sprø, mye dill og kraftig smak; 59 kr uten dipp er utrolig mye for pengene. ' +
+			'Likevel så mektig at jeg ikke nødvendigvis velger den hver gang jeg bare skal ha litt fries.',
 		traits: 'DILL · SPRØ · PRISSTERKT',
 		image: imgBurgerNo,
 		mapUrl:
