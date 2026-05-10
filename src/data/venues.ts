@@ -121,6 +121,18 @@ export const venues: Venue[] = [
 			'https://www.google.com/maps/search/?api=1&query=Cafe+L%C3%B8kka+Trondheim',
 		updated: '10.05.2026',
 	},
+	{
+		name: 'Kompis sorgenfri',
+		tier: 'unrated',
+		priceNok: 0,
+		score: '—',
+		blurb: 'Ikke vurdert ennå.',
+		traits: 'IKKE VURDERT',
+		image: img,
+		mapUrl:
+			'https://www.google.com/maps/search/?api=1&query=Kompis+sorgenfri+Trondheim',
+		updated: '10.05.2026',
+	},
 	// {
 	// 	name: 'SuperHero Burger',
 	// 	priceNok: 0,
