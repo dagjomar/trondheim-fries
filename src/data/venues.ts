@@ -167,6 +167,7 @@ export const venues: Venue[] = [
 		traits: 'IKKE VURDERT',
 		image: img,
 		mapUrl: 'https://maps.app.goo.gl/LgDaZ15SmNCPEXNLA?g_st=ic',
+		websiteUrl: 'https://brooklyndiner.no/',
 		updated: '12.05.2026',
 	},
 	// {
