@@ -148,11 +148,14 @@ export const venues: Venue[] = [
 	},
 	{
 		name: '& Friends (Solsiden)',
-		tier: 'unrated',
+		tier: 'ok',
 		priceNok: 65,
-		score: '—',
-		blurb: 'Ikke vurdert ennå.',
-		traits: 'IKKE VURDERT · SOLSIDEN',
+		score: '6,0',
+		blurb:
+			'Liten porsjon (ca. 27 stk), ujevne men store cuts — bra crunch, myk inni. Krydder og salt utenpå blir fort mye, med en litt merkelig «sour cream»-aktig ettersmak. ' +
+			'Ingen ketchup tilbudt (trekk); gratis dip hjelper mot krydderet men smaker fish’n’chips/remulade. Tykke biter mest potetmos, andre salt-krydderbomber. ' +
+			'Ser bra ut i starten, men ble for mye — fullførte ikke. Anbefales om du elsker krydder og remulade; jeg ville hatt ketchup og prioriterer ikke denne varianten igjen.',
+		traits: 'KRYDDER · LITEN PORSJON · SOLSIDEN',
 		image: img,
 		mapUrl: 'https://maps.app.goo.gl/HxEjygrViPdGP2rf9',
 		websiteUrl: 'https://www.andfriendssolsiden.no/',
